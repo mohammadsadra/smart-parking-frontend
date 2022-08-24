@@ -1,4 +1,4 @@
-# smart_parking
+# Smart Parking
 
 Smart parking front-end project.
 
