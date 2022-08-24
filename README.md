@@ -3,7 +3,7 @@
 Smart parking front-end project.
 
 ## Getting Started
-My fina Bsc project.
+My final Bsc project.
 
 This project is a starting point for a Flutter application.
 
