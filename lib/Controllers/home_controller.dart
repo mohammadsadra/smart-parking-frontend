@@ -5,6 +5,7 @@ import 'package:location/location.dart';
 
 class HomeController extends GetxController {
   RxInt pageIndex = 0.obs;
+  
   var location = Location();
   LocationData? locAtrr;
 

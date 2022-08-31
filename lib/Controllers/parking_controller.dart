@@ -10,6 +10,7 @@ class ParkingController extends GetxController {
   get isLoading => _isLoading.value;
 
   RxList<Parking> allParking = <Parking>[].obs;
+  RxString search = ''.obs;
 
   Future getAllParking() async {
     _isLoading.value = true;

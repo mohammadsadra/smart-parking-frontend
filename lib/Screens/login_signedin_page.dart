@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:smart_parking/Controllers/user_controller.dart';
 
 class UserSignedInPage extends StatelessWidget {
+  const UserSignedInPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GetBuilder<UserController>(
