@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
-import 'package:location/location.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:smart_parking/Controllers/home_controller.dart';
 import 'package:smart_parking/Screens/home_page.dart';
 import 'package:get/get.dart';
 import 'package:smart_parking/Widgets/custom_material_color.dart' as clr;
 
 void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
   Get.put(HomeController()).initLocationService();
 }
