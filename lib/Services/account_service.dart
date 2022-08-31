@@ -19,7 +19,7 @@ class AccountService {
   AccountService() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://api.i-park.ir/',
+        baseUrl: 'http://api.i-park.ir/',
         // headers: {
         //   "Authorization": "Bearer $_token",
         // },

@@ -5,6 +5,10 @@ class UserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return  Scaffold(
+      body: const Center(
+        child: Text('UserPage'),
+      ),
+    );
   }
 }
