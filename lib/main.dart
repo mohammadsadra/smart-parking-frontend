@@ -4,6 +4,7 @@ import 'package:location/location.dart';
 import 'package:smart_parking/Controllers/home_controller.dart';
 import 'package:smart_parking/Screens/home_page.dart';
 import 'package:get/get.dart';
+import 'package:smart_parking/Widgets/custom_material_color.dart' as clr;
 
 void main() async {
   runApp(const MyApp());
@@ -19,8 +20,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'i-Park',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: clr.CustomMaterialColor(133, 214, 224).mdColor,
+        secondaryHeaderColor: const Color.fromRGBO(32, 66, 243, 1),
         fontFamily: 'Kalameh',
+        scaffoldBackgroundColor: const Color.fromRGBO(243, 246, 250, 1),
       ),
       locale: const Locale('fa', 'IR'),
       debugShowCheckedModeBanner: false,
