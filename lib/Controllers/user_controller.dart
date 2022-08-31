@@ -29,8 +29,15 @@ class UserController extends GetxController {
 
   getUserFromStorage() {
     var temp = GetStorage().read('user');
-    user = User.fromJson(temp);
-    return user;
+    if (temp != null) {
+      if (temp is User) {
+        user = temp;
+        return temp;
+      }
+      user = User.fromJson(temp);
+      return user;
+    }
+    return null;
   }
 
   logout() {
