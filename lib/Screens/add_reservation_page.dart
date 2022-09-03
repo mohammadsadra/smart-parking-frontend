@@ -146,15 +146,19 @@ class AddReservationPage extends StatelessWidget {
                           color: const Color.fromRGBO(133, 214, 224, 1),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Center(
-                          child: Text(
-                            'رزرو',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                        child: Center(
+                          child: !userCtrl.addReserveLoading
+                              ? const Text(
+                                  'رزرو',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )
+                              : CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
                         ),
                       ),
                     ),

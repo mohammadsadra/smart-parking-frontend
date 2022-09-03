@@ -19,6 +19,9 @@ class UserController extends GetxController {
   RxBool _isReservationLoading = false.obs;
   get isReservationLoading => _isReservationLoading.value;
 
+  RxBool _addReserveLoading = false.obs;
+  get addReserveLoading => _addReserveLoading.value;
+
   RxBool isPasswordVisible = true.obs;
 
   RxString email = ''.obs;
@@ -107,7 +110,8 @@ class UserController extends GetxController {
 
   Future addReservation(cost) async {
     try {
-      _isReservationLoading.value = true;
+      _addReserveLoading.value = true;
+      update();
       Gregorian newStart = Gregorian(
         startDate.value.year,
         startDate.value.month,
@@ -160,9 +164,12 @@ class UserController extends GetxController {
             ':00.0',
         cost * endDate.value.difference(startDate.value).inHours,
       );
-      _isReservationLoading.value = false;
+      _addReserveLoading.value = false;
       // resList.add(res);
+      Get.back();
       update();
+      Get.snackbar('موفق!', 'رزرو با موفقیت انجام شد.');
+      getUserReservations();
       return true;
     } catch (e) {
       print(e);
