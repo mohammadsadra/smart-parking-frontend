@@ -1,7 +1,5 @@
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
-import 'package:location/location.dart';
 import 'package:smart_parking/Models/parking.dart';
 import 'package:smart_parking/Services/parking_services.dart';
 
@@ -14,6 +12,7 @@ class ParkingController extends GetxController {
 
   Future getAllParking() async {
     _isLoading.value = true;
+    update();
     var response = ParkingService().getAllParking();
     response.then(
       (value) => {

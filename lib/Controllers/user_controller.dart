@@ -7,8 +7,6 @@ import 'package:smart_parking/Models/parking.dart';
 import 'package:smart_parking/Models/user.dart';
 import 'package:smart_parking/Screens/login_page.dart';
 import 'package:smart_parking/Screens/login_signedin_page.dart';
-import 'package:smart_parking/Services/account_service.dart';
-import 'package:smart_parking/Services/parking_services.dart';
 import 'package:smart_parking/Services/user_services.dart';
 
 class UserController extends GetxController {
@@ -20,7 +18,6 @@ class UserController extends GetxController {
   RxString email = ''.obs;
   RxString password = ''.obs;
   var user;
-
   var page;
 
   setUserInStorage() {

@@ -1,0 +1,10 @@
+kind: ExternalService
+name: i-park-frontend
+spec:
+  domains:
+    - name: app.i-park.ir
+  image_pull_policy: Always
+  port: 80
+  source:
+    context: .
+    project_type: static_website

@@ -5,9 +5,10 @@ import 'package:smart_parking/Controllers/parking_controller.dart';
 import 'package:smart_parking/Widgets/parking_widgets.dart';
 
 class SearchPage extends StatelessWidget {
+  SearchPage({Key? key}) : super(key: key);
   var homeCtrl = Get.put(HomeController());
   var parkingCtrl = Get.put(ParkingController());
-  var _controller = TextEditingController();
+  final _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +39,18 @@ class SearchPage extends StatelessWidget {
             parkingCtrl.update();
           },
         ),
+        actions: <Widget>[
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              parkingCtrl.getAllParking();
+            },
+            child: const Icon(
+              Icons.refresh,
+              color: Color.fromRGBO(133, 214, 224, 1),
+            ),
+          ),
+        ],
       ),
       body: GetBuilder<ParkingController>(
         init: ParkingController(),
