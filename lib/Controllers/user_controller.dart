@@ -84,6 +84,7 @@ class UserController extends GetxController {
       }
       _isLoading.value = false;
       update();
+      getUserReservations();
       return res;
     } catch (e) {
       Get.snackbar('Failed!', 'Something went wrong');
