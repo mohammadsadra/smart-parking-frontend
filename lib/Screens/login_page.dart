@@ -71,15 +71,19 @@ class LoginPage extends StatelessWidget {
                     GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       child: Container(
-                        child: const Text(
-                          'ثبت‌نام / ورود',
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
+                        child: !userCtrl.isLoading
+                            ? const Text(
+                                'ثبت‌نام / ورود',
+                                maxLines: 1,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : const CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
                         padding: const EdgeInsets.symmetric(
                           vertical: 14,
                           horizontal: 100,

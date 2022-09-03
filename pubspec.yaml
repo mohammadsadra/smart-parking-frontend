@@ -41,6 +41,11 @@ dependencies:
   jwt_decode: ^0.3.1
   location: ^4.4.0
   mqtt_client: ^9.6.8
+  day_night_time_picker: ^1.0.5
+  intl: ^0.17.0
+  time_range_picker: ^2.2.0
+  shamsi_date: ^1.0.1
+  qr_flutter: ^4.0.0
 
 dev_dependencies:
   flutter_test:

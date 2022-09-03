@@ -1,4 +1,5 @@
 class Parking {
+  int? id;
   String? guid;
   String? name;
   String? description;
@@ -18,7 +19,8 @@ class Parking {
   int? ownerId;
 
   Parking(
-      {this.guid,
+      {this.id,
+      this.guid,
       this.name,
       this.description,
       this.address,
@@ -37,6 +39,7 @@ class Parking {
       this.ownerId});
 
   Parking.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     guid = json['guid'];
     name = json['name'];
     description = json['description'];
@@ -58,6 +61,7 @@ class Parking {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
     data['guid'] = this.guid;
     data['name'] = this.name;
     data['description'] = this.description;

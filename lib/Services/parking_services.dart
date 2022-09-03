@@ -12,6 +12,7 @@ class ParkingService {
         var res = Parking.fromJson(response.data['allParking'][i]);
         loaded.add(res);
       }
+      print(loaded[0].id);
 
       return loaded;
     } on DioError catch (e) {
