@@ -98,7 +98,6 @@ class UserController extends GetxController {
       update();
       var res = await UserService().getUserReservations(user.id);
       resList.value = res;
-      print(resList[0].startTime);
       _isReservationLoading.value = false;
       update();
       return true;

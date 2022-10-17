@@ -109,13 +109,13 @@ class ReservationCard extends StatelessWidget {
                       color: Colors.grey,
                     ),
                   ),
-                  Text(
-                    'مبلغ قابل پرداخت: ${reservation.cost} تومان',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: Colors.grey,
-                    ),
-                  ),
+                  // Text(
+                  //   'مبلغ قابل پرداخت: ${reservation.cost} تومان',
+                  //   style: const TextStyle(
+                  //     fontWeight: FontWeight.w400,
+                  //     color: Colors.grey,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
