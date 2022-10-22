@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smart_parking/Controllers/parking_controller.dart';
+import 'package:smart_parking/Controllers/user_controller.dart';
 import 'package:smart_parking/Models/parking.dart';
 import 'package:smart_parking/Screens/parking_info_page.dart';
 
@@ -64,12 +66,18 @@ class ValidateParkingWidget extends StatelessWidget {
     );
   }
 
+  var parkingCtrl = Get.put(ParkingController());
+  var userCtrl = Get.put(UserController());
+
   showAlertDialog(BuildContext context) {
     // set up the button
     Widget okButton = TextButton(
       child: const Text("تایید"),
       onPressed: () {
         Navigator.pop(context);
+        parkingCtrl.updateIsVerifyParking(parking.guid, true).then((value) {
+          userCtrl.update();
+        });
       },
     );
 

@@ -11,10 +11,10 @@ class OwnerPage extends StatelessWidget {
   const OwnerPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var parkingCtrl = Get.put(ParkingController());
-    return GetBuilder<UserController>(
-      init: UserController(),
-      builder: (userCtrl) {
+    var userCtrl = Get.put(UserController());
+    return GetBuilder<ParkingController>(
+      init: ParkingController(),
+      builder: (parkingCtrl) {
         return SafeArea(
           child: Scaffold(
             appBar: AppBar(
@@ -44,7 +44,7 @@ class OwnerPage extends StatelessWidget {
                 ),
               ],
             ),
-            body: !userCtrl.isReservationLoading
+            body: !parkingCtrl.updateIsVerify.value
                 ? Column(
                     children: [
                       Row(
@@ -72,7 +72,7 @@ class OwnerPage extends StatelessWidget {
                       ),
                     ],
                   )
-                : Center(child: CircularProgressIndicator()),
+                : Center(child: const CircularProgressIndicator()),
           ),
         );
       },

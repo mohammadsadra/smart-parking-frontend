@@ -65,4 +65,20 @@ class ParkingService {
       }
     }
   }
+
+  Future updateIsVerified(guid, value) async {
+    try {
+      var response =
+          await AccountService().dio.put('/parking/update/isverfied', data: {
+        'guid': guid,
+        'is_verified': value,
+      });
+      return response.data;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        Get.snackbar('Failed!', 'Something went wrong');
+        return e.response;
+      }
+    }
+  }
 }

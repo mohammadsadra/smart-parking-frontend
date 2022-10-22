@@ -8,24 +8,28 @@ class ParkingController extends GetxController {
   get isLoading => _isLoading.value;
 
   RxBool addParkingLoading = false.obs;
+  RxBool updateIsVerify = false.obs;
 
   RxList<Parking> allParking = <Parking>[].obs;
   RxList<Parking> notVerifiedParking = <Parking>[].obs;
   RxString search = ''.obs;
 
   RxString name = ''.obs,
-        description = ''.obs,
-        address = ''.obs,
-        phone = ''.obs,
-        working_hours = ''.obs,
-        working_days = ''.obs,
-        picture = ''.obs;
-    RxDouble latitude = 0.0.obs, longitude = 0.0.obs, cost = 0.0.obs;
-    RxInt total_capacity = 0.obs;
+      description = ''.obs,
+      address = ''.obs,
+      phone = ''.obs,
+      working_hours = ''.obs,
+      working_days = ''.obs,
+      picture = ''.obs;
+  RxDouble latitude = 0.0.obs, longitude = 0.0.obs, cost = 0.0.obs;
+  RxInt total_capacity = 0.obs;
 
   Future getAllParking() async {
     _isLoading.value = true;
+    allParking.value = [];
+    notVerifiedParking.value = [];
     update();
+
     var response = ParkingService().getAllParking();
     response.then(
       (value) {
@@ -58,9 +62,6 @@ class ParkingController extends GetxController {
   ) async {
     addParkingLoading.value = true;
     update();
-    print(
-      name,
-    );
     var response = ParkingService().addParking(
       name,
       description,
@@ -79,6 +80,18 @@ class ParkingController extends GetxController {
       (value) {
         getAllParking();
         addParkingLoading.value = false;
+        update();
+      },
+    );
+  }
+
+  Future updateIsVerifyParking(guid, value) async {
+    updateIsVerify.value = true;
+    var response = ParkingService().updateIsVerified(guid, value);
+    response.then(
+      (value) {
+        getAllParking();
+        updateIsVerify.value = false;
         update();
       },
     );
