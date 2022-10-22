@@ -8,6 +8,7 @@ class ParkingController extends GetxController {
   get isLoading => _isLoading.value;
 
   RxList<Parking> allParking = <Parking>[].obs;
+  RxList<Parking> notVerifiedParking = <Parking>[].obs;
   RxString search = ''.obs;
 
   Future getAllParking() async {
@@ -15,10 +16,16 @@ class ParkingController extends GetxController {
     update();
     var response = ParkingService().getAllParking();
     response.then(
-      (value) => {
-        allParking.value = value,
-        _isLoading.value = false,
-        update(),
+      (value) {
+        for (Parking park in value) {
+          if (park.is_verified!) {
+            allParking.add(park);
+          } else {
+            notVerifiedParking.add(park);
+          }
+        }
+        _isLoading.value = false;
+        update();
       },
     );
   }

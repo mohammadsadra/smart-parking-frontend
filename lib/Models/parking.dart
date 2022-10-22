@@ -17,26 +17,29 @@ class Parking {
   String? workingDays;
   String? picture;
   int? ownerId;
+  bool? is_verified;
 
-  Parking(
-      {this.id,
-      this.guid,
-      this.name,
-      this.description,
-      this.address,
-      this.city,
-      this.phone,
-      this.totalCapacity,
-      this.freeCapacity,
-      this.reservedCapacity,
-      this.reservedFreeCapacity,
-      this.latitude,
-      this.longitude,
-      this.cost,
-      this.workingHours,
-      this.workingDays,
-      this.picture,
-      this.ownerId});
+  Parking({
+    this.id,
+    this.guid,
+    this.name,
+    this.description,
+    this.address,
+    this.city,
+    this.phone,
+    this.totalCapacity,
+    this.freeCapacity,
+    this.reservedCapacity,
+    this.reservedFreeCapacity,
+    this.latitude,
+    this.longitude,
+    this.cost,
+    this.workingHours,
+    this.workingDays,
+    this.picture,
+    this.ownerId,
+    this.is_verified,
+  });
 
   Parking.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -57,6 +60,7 @@ class Parking {
     workingDays = json['working_days'];
     picture = json['picture'];
     ownerId = json['owner_id'];
+    is_verified = json['is_verified'];
   }
 
   Map<String, dynamic> toJson() {
@@ -79,6 +83,7 @@ class Parking {
     data['working_days'] = this.workingDays;
     data['picture'] = this.picture;
     data['owner_id'] = this.ownerId;
+    data['is_verified'] = this.is_verified;
     return data;
   }
 }

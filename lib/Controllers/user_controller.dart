@@ -8,8 +8,10 @@ import 'package:shamsi_date/shamsi_date.dart';
 import 'package:smart_parking/Models/parking.dart';
 import 'package:smart_parking/Models/reservation.dart';
 import 'package:smart_parking/Models/user.dart';
+import 'package:smart_parking/Screens/admin_page.dart';
 import 'package:smart_parking/Screens/login_page.dart';
 import 'package:smart_parking/Screens/login_signedin_page.dart';
+import 'package:smart_parking/Screens/owner_page.dart';
 import 'package:smart_parking/Services/user_services.dart';
 
 class UserController extends GetxController {
@@ -68,6 +70,16 @@ class UserController extends GetxController {
     update();
   }
 
+  routingPage(User user) {
+    if (user.role!.toLowerCase() == 'normal') {
+      return UserSignedInPage();
+    } else if (user.role!.toLowerCase() == 'admin') {
+      return AdminPage();
+    } else if (user.role!.toLowerCase() == 'owner') {
+      return OwnerPage();
+    }
+  }
+
   Future loginRegister() async {
     try {
       _isLoading.value = true;
@@ -78,7 +90,7 @@ class UserController extends GetxController {
       if (res['login'] == true ||
           (res['register'] == true && res['login'] == true)) {
         Get.snackbar('خوش‌آمدید!', 'شما با موفقیت وارد شدید.');
-        page = UserSignedInPage();
+        page = routingPage(user);
       } else {
         Get.snackbar('ناموفق!', 'رمز عبور شما اشتباه است.');
       }
@@ -183,8 +195,10 @@ class UserController extends GetxController {
     super.onInit();
     getUserFromStorage();
     if (user != null) {
-      page = UserSignedInPage();
-      getUserReservations();
+      page = routingPage(user);
+      if (user.role == 'Normal') {
+        getUserReservations();
+      }
     } else {
       page = LoginPage();
     }
