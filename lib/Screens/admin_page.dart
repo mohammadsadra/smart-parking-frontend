@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:smart_parking/Controllers/user_controller.dart';
 import 'package:smart_parking/Screens/add_reservation_page.dart';
+import 'package:smart_parking/Screens/add_parking_page.dart';
 import 'package:smart_parking/Widgets/reservation_widgets.dart';
 
 class AdminPage extends StatelessWidget {
@@ -32,6 +33,27 @@ class AdminPage extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                             textDirection: TextDirection.rtl,
+                          ),
+                          const SizedBox(height: 10),
+                          GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            onTap: () {
+                              Get.to(AddParkingPage());
+                            },
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: const [
+                                Icon(Icons.add),
+                                SizedBox(width: 8),
+                                Text(
+                                  'افزودن پارکینگ',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                  textDirection: TextDirection.rtl,
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(height: 10),
                           GestureDetector(
