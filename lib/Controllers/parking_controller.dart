@@ -7,9 +7,21 @@ class ParkingController extends GetxController {
   RxBool _isLoading = false.obs;
   get isLoading => _isLoading.value;
 
+  RxBool addParkingLoading = false.obs;
+
   RxList<Parking> allParking = <Parking>[].obs;
   RxList<Parking> notVerifiedParking = <Parking>[].obs;
   RxString search = ''.obs;
+
+  RxString name = ''.obs,
+        description = ''.obs,
+        address = ''.obs,
+        phone = ''.obs,
+        working_hours = ''.obs,
+        working_days = ''.obs,
+        picture = ''.obs;
+    RxDouble latitude = 0.0.obs, longitude = 0.0.obs, cost = 0.0.obs;
+    RxInt total_capacity = 0.obs;
 
   Future getAllParking() async {
     _isLoading.value = true;
@@ -25,6 +37,48 @@ class ParkingController extends GetxController {
           }
         }
         _isLoading.value = false;
+        update();
+      },
+    );
+  }
+
+  Future addParking(
+    name,
+    description,
+    address,
+    phone,
+    total_capacity,
+    latitude,
+    longitude,
+    cost,
+    working_hours,
+    working_days,
+    picture,
+    owner_id,
+  ) async {
+    addParkingLoading.value = true;
+    update();
+    print(
+      name,
+    );
+    var response = ParkingService().addParking(
+      name,
+      description,
+      address,
+      phone,
+      total_capacity,
+      latitude,
+      longitude,
+      cost,
+      working_hours,
+      working_days,
+      picture,
+      owner_id,
+    );
+    response.then(
+      (value) {
+        getAllParking();
+        addParkingLoading.value = false;
         update();
       },
     );
