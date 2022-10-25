@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:smart_parking/Controllers/home_controller.dart';
 import 'package:smart_parking/Controllers/parking_controller.dart';
+import 'package:smart_parking/Screens/get_row_column.dart';
 import 'package:smart_parking/Screens/home_page.dart';
 import 'package:get/get.dart';
+import 'package:smart_parking/Screens/parking_map.dart';
 import 'package:smart_parking/Widgets/custom_material_color.dart' as clr;
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
@@ -36,7 +38,8 @@ class MyApp extends StatelessWidget {
       ),
       locale: const Locale('fa', 'IR'),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: GetRowColumn(),
+      // home: const HomePage(),
     );
   }
 }

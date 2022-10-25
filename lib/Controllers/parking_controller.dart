@@ -23,6 +23,8 @@ class ParkingController extends GetxController {
       picture = ''.obs;
   RxDouble latitude = 0.0.obs, longitude = 0.0.obs, cost = 0.0.obs;
   RxInt total_capacity = 0.obs;
+  RxInt row = 1.obs, column = 1.obs;
+  var list = [].obs;
 
   Future getAllParking() async {
     _isLoading.value = true;
